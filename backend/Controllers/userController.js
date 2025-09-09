@@ -3,7 +3,7 @@ const bcrypt=require('bcrypt')
 
 
 const userRegister=(req,res)=>{
-    const {username,password,fullname}=req.body;
+    const {username,password,firstname,lastname}=req.body;
 
     const findUser=
 
