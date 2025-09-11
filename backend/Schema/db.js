@@ -1,12 +1,23 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-mongoose.connect(process.env.MONGODB_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log("Connected to MongoDB"))
-  .catch(err => console.error("Connection error:", err));
+// connect to NEW DB with mongoose
+async function connectDB() {
+  try {
+    await mongoose.connect(process.env.MONGODB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      dbName: "Chat" // 👈 this creates/uses the new DB
+    });
+    console.log("✅ Connected to MongoDB:", mongoose.connection.name);
+  } catch (err) {
+    console.error("❌ Error connecting to MongoDB:", err);
+  }
+}
 
+connectDB();
+
+// define schema & model
 const userSchema = new mongoose.Schema({
   username: { type: String, unique: true },
   password: String,
@@ -16,6 +27,4 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-module.exports={
-    User
-}
+module.exports = { User };
