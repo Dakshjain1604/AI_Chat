@@ -11,4 +11,4 @@ app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 //importing the routes
 app.use('/user', userRoutes_1.default);
-app.listen(3000);
+app.listen(4000);
