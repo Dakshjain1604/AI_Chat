@@ -5,6 +5,7 @@ import cors from "cors"
 import userRoutes from "./routes/userRoutes";
 import chatRoutes from "./routes/chatRoutes";
 import chatService from "./routes/chatService"
+
 const app = express()
 app.use(express.json());
 app.use(cors());
@@ -34,7 +35,5 @@ io.on("connection",(socket)=>{
         console.log("user disconnected",socket.id);
     });
 });
-
-
 
 app.listen(4000);
