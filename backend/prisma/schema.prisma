@@ -30,5 +30,29 @@ model User {
 model Group{
   id          Int     @id      @default(autoincrement())
   name        String 
-  members     User[]
+  members     GroupMember[]
+  messages    Message[]
+  createdAt   DateTime   @default(now())
+}
+
+
+model GroupMember {
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  groupId   Int
+  user      User    @relation(fields: [userId], references: [id])
+  group     Group   @relation(fields: [groupId], references: [id])
+  joinedAt  DateTime @default(now())
+
+  @@unique([userId, groupId]) // prevent duplicate membership
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  text      String
+  userId    Int
+  groupId   Int
+  user      User     @relation(fields: [userId], references: [id])
+  group     Group    @relation(fields: [groupId], references: [id])
+  createdAt DateTime @default(now())
 }
