@@ -6,7 +6,6 @@ import "dotenv/config";
 const JWT_SECRET=process.env.JWT_SECRET as string;
 
 export const SignupUser=async (req:Request,res:Response)=>{
- 
         const email=req.body.email;
         const name=req.body.name;
         const password=req.body.password;
@@ -37,9 +36,6 @@ export const SignupUser=async (req:Request,res:Response)=>{
 
         })   
 };
-
-
-
 
 export const SigninUser=async (req:Request,res:Response)=>{
     try{const email=req.body.email;
