@@ -3,11 +3,11 @@ import http from "http"
 import {Server} from "socket.io"
 import cors from "cors"
 import userRoutes from "./routes/userRoutes";
-import chatRoutes from "./routes/chatRoutes";
+import chatRoutes from "./routes/chatRoutes"
 import chatService from "./routes/chatService"
 
 const app = express()
-app.use(express.json());
+app.use(express.json()); 
 app.use(cors());
 
 const server=http.createServer(app);
