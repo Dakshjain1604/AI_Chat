@@ -18,7 +18,7 @@ const io=new Server(server,{
 app.use('/user',userRoutes);
 app.use('/chat',chatRoutes);
 
-io.on("connection",(socket)=>{
+io.on("connection",(socket)=>{d
     console.log("User Connected:",socket.id);
 
     socket.on("joinRoom",(room)=>{
